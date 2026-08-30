@@ -1,0 +1,11 @@
+# 가상환경
+.venv/
+
+# 대용량 데이터 (train.csv, trackman_history.csv 등은 GitHub 100MB 제한 초과)
+data/
+
+# 노트북/스크립트 실행 산출물
+*/output/
+
+# OS/에디터 잡파일
+.DS_Store
