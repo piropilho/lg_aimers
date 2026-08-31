@@ -9,3 +9,7 @@ data/
 
 # OS/에디터 잡파일
 .DS_Store
+
+# 파이썬/CatBoost 자동 생성물
+__pycache__/
+catboost_info/

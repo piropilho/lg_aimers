@@ -1,0 +1,18 @@
+[05:07:29] Loading train.csv ...
+[05:07:34] Training XGBoost (tuned) ...
+[05:08:16]   XGBoost AUC=0.54811
+[05:08:16] Training LightGBM (tuned) ...
+/Users/piropilho/Desktop/lg_aimers/.venv/lib/python3.12/site-packages/lightgbm/sklearn.py:1106: LGBMDeprecationWarning: The argument 'eval_set' is deprecated, use 'eval_X' and 'eval_y' instead.
+  eval_set = _validate_eval_set_Xy(eval_set=eval_set, eval_X=eval_X, eval_y=eval_y)
+[05:08:23]   LightGBM AUC=0.54810
+[05:08:23] Training CatBoost (tuned) ...
+[05:10:54]   CatBoost AUC=0.54973
+[05:10:54] 예측 간 상관관계:
+           xgboost  lightgbm  catboost
+xgboost   1.000000  0.982474  0.935906
+lightgbm  0.982474  1.000000  0.928440
+catboost  0.935906  0.928440  1.000000
+[05:10:54] 단순 평균 블렌드 — AUC=0.54945  LogLoss=0.68902
+[05:11:04] 가중치 최적화 블렌드 (참고용) — weights={'xgboost': 0.05, 'lightgbm': 0.2, 'catboost': 0.75}  AUC=0.54994
+[05:11:04] Saved blend_results.json
+[05:11:04] ALL_DONE

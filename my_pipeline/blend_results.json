@@ -1,0 +1,30 @@
+{
+  "individual": {
+    "xgboost": {
+      "auc": 0.5481122282624764,
+      "logloss": 0.689242422580719
+    },
+    "lightgbm": {
+      "auc": 0.5480962405440003,
+      "logloss": 0.6892593880993654
+    },
+    "catboost": {
+      "auc": 0.5497316291831377,
+      "logloss": 0.6889002389891453
+    }
+  },
+  "equal_average": {
+    "auc": 0.5494520709841364,
+    "logloss": 0.68901599673867
+  },
+  "optimized_weights_UPPER_BOUND": {
+    "weights": {
+      "xgboost": 0.05,
+      "lightgbm": 0.2,
+      "catboost": 0.75
+    },
+    "auc": 0.5499350784484156,
+    "logloss": 0.6888978908564694,
+    "note": "validation set에서 직접 탐색한 가중치라 낙관 편향 있음 (참고용 상한선)"
+  }
+}
