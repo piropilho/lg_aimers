@@ -14,6 +14,12 @@ BASE_DIR = Path(__file__).resolve().parent
 CATBOOST_WEIGHT = 0.95
 RF_WEIGHT = 0.05
 D1_BLEND_WEIGHT = 0.20
+# 최종 예측 캘리브레이션 — 로짓 공간 temperature scaling (T<1이면 스프레드 확장).
+# train.csv 2024 홀드아웃(champion은 2019-2023 학습)에서 최종 블렌드가 과소확신으로
+# 나타나, 전체 2024 Brier 최소화로 T=0.839를 산출. 2024 기준 Brier 0.245843 -> 0.245738.
+# 각 행 독립 고정 변환이라 대회 규정(행 독립 예측) 위반 아님.
+# 산출 근거: experiments/calibration_results.md
+BLEND_TEMPERATURE = 0.839
 PITCH_GROUPS = ("fastball", "breaking", "offspeed")
 PITCH_RATE_COLS = [f"asof_pitcher_{g}_rate" for g in PITCH_GROUPS]
 A2_PHYSICAL_TARGET_COLS = ["rel_speed", "spin_rate", "movement_norm", "extension", "zone_speed"]
@@ -236,6 +242,11 @@ def logit_shift(pred, shift):
     return 1 / (1 + np.exp(-(np.log(p / (1 - p)) + shift)))
 
 
+def temperature_scale(pred, temperature):
+    p = np.clip(np.asarray(pred, dtype="float64"), 1e-6, 1 - 1e-6)
+    return 1 / (1 + np.exp(-(np.log(p / (1 - p)) / temperature)))
+
+
 def residual_correction(raw, maps):
     values = []
     for e in maps:
@@ -355,6 +366,7 @@ def main():
     extra = pd.concat([a1_features(test, a1_bundle["aux_pitch"]), a2_features(test, a2_bundle)], axis=1)
     p_student = predict_student(test, d1_bundle, extra)
     pred = (1 - D1_BLEND_WEIGHT) * p_champion + D1_BLEND_WEIGHT * p_student
+    pred = temperature_scale(pred, BLEND_TEMPERATURE)
 
     out = pd.DataFrame({ID_COL: test[ID_COL], TARGET_COL: pred})
     output_dir = BASE_DIR / "output"

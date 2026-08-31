@@ -1,0 +1,22 @@
+{
+  "xgboost_raw_id_numeric": {
+    "auc": 0.5475962407544146,
+    "logloss": 0.6893592476844788,
+    "fit_time_s": 44.1995530128479
+  },
+  "lightgbm_raw_id_numeric": {
+    "auc": 0.5491813222800989,
+    "logloss": 0.6891341454887728,
+    "fit_time_s": 9.380084991455078
+  },
+  "catboost_raw_id_numeric": {
+    "auc": 0.5497948736928651,
+    "logloss": 0.6888277214915389,
+    "fit_time_s": 9761.755275011063
+  },
+  "catboost_raw_id_categorical": {
+    "auc": 0.5463185180904422,
+    "logloss": 0.6895925943251742,
+    "fit_time_s": 5612.127192258835
+  }
+}

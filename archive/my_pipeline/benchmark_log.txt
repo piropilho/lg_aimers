@@ -1,0 +1,14 @@
+[18:04:10] Loading train.csv, 2024 시즌만 추출 ...
+[18:04:12] valid shape=(253507, 49)  성공률=0.4861
+[18:04:12] 모델 번들 로드 ...
+[18:04:13] 추론 시작 ...
+[18:04:30] RF (portable) 단독               AUC=0.58801  LogLoss=0.68377  Brier=0.24534
+[18:04:32] CatBoost champion 단독           AUC=0.57326  LogLoss=0.68467  Brier=0.24580
+[18:04:32] Champion (CB95+RF5)            AUC=0.57415  LogLoss=0.68453  Brier=0.24573
+[18:04:35] Student (d1) 단독                AUC=0.56586  LogLoss=0.68619  Brier=0.24654
+[18:04:35] 최종 블렌드 (champion80+student20)  AUC=0.57297  LogLoss=0.68477  Brier=0.24584
+[18:04:35] 추론 완료 (22.5s)
+[18:04:35] 
+[18:04:35] 팀원 번들 자체 기록 metadata: {'split': 'train=2019-2023, validation=2024', 'brier': 0.24742413021690346, 'competition_score': 953.8552716772397, 'note': 'score includes temporally learned 2023 residual maps'}
+[18:04:35]   -> 우리가 방금 실측한 champion 단독 Brier와 비교해볼 것
+[18:04:35] ALL_DONE

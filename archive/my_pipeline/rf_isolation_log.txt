@@ -1,0 +1,9 @@
+[23:02:58] Loading train.csv ...
+[23:03:16] [A:팀원피처+sklearnRF] fit 시작 (train=(1221585, 56), n_estimators=300, max_depth=None) ...
+[23:07:41] [A:팀원피처+sklearnRF] fit 완료 (264.9s)
+[23:07:48] [A:팀원피처+sklearnRF] AUC=0.51022  LogLoss=0.69523
+[23:07:56] [B:우리피처+sklearnRF] fit 시작 (train=(1221585, 65), n_estimators=300, max_depth=None) ...
+[23:14:45] [B:우리피처+sklearnRF] fit 완료 (408.3s)
+[23:14:53] [B:우리피처+sklearnRF] AUC=0.50513  LogLoss=0.69656
+[23:14:53] Saved rf_isolation_results.json
+[23:14:53] ALL_DONE

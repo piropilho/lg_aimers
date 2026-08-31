@@ -1,0 +1,43 @@
+[00:18:25] load train.csv, 2024 ...
+[00:18:28] 2024 rows=253507  obs_rate=0.4861  const_Brier=0.249807
+[00:18:28] inference ...
+[00:18:52] inference done 23.6s
+[00:18:52] 
+[00:18:52] === raw diagnostics (2024, full) ===
+[00:18:52] blend (submit.zip)   Brier=0.245843  LogLoss=0.68477  AUC=0.57297  reliability=2.441e-04  ECE=0.0134  mean_pred=0.4800
+[00:18:52] champion CB alone    Brier=0.245797  LogLoss=0.68467  AUC=0.57326  reliability=2.488e-04  ECE=0.0136  mean_pred=0.4770
+[00:18:52] champion+RF5         Brier=0.245729  LogLoss=0.68453  AUC=0.57415  reliability=2.739e-04  ECE=0.0140  mean_pred=0.4776
+[00:18:52] blend, RF weight 0   Brier=0.245891  LogLoss=0.68486  AUC=0.57228  reliability=2.161e-04  ECE=0.0127  mean_pred=0.4794
+[00:18:52] 
+[00:18:52] === blend decile reliability (n, pred, obs, gap) ===
+[00:18:52]   d0  n= 25351  pred=0.3943  obs=0.3682  gap=+0.0261
+[00:18:52]   d1  n= 25351  pred=0.4269  obs=0.4205  gap=+0.0064
+[00:18:52]   d2  n= 25350  pred=0.4455  obs=0.4428  gap=+0.0027
+[00:18:52]   d3  n= 25351  pred=0.4597  obs=0.4600  gap=-0.0003
+[00:18:52]   d4  n= 25350  pred=0.4720  obs=0.4837  gap=-0.0117
+[00:18:52]   d5  n= 25351  pred=0.4836  obs=0.4974  gap=-0.0138
+[00:18:52]   d6  n= 25351  pred=0.4962  obs=0.5104  gap=-0.0143
+[00:18:52]   d7  n= 25350  pred=0.5121  obs=0.5239  gap=-0.0118
+[00:18:52]   d8  n= 25351  pred=0.5335  obs=0.5558  gap=-0.0222
+[00:18:52]   d9  n= 25351  pred=0.5760  obs=0.5984  gap=-0.0224
+[00:18:52] 
+[00:18:52] === calibrators, honest 2-fold CV within 2024 ===
+[00:18:52] [submit.zip blend]
+[00:18:56]   shift(1p)    CV_Brier=0.245809  Δ=-0.000035   (full-fit bound=0.245804, Δ=-0.000039)  params=[0.02, 0.03]
+[00:18:59]   temp(1p)     CV_Brier=0.245738  Δ=-0.000105   (full-fit bound=0.245738, Δ=-0.000106)  params=[0.84, 0.83]
+[00:18:59]   platt(2p)    CV_Brier=0.245629  Δ=-0.000215   (full-fit bound=0.245623, Δ=-0.000221)  params=[(1.2551, 0.0407), (1.2899, 0.0525)]
+[00:19:00]   isotonic     CV_Brier=0.245664  Δ=-0.000179   (full-fit bound=0.245497, Δ=-0.000346)  params=['monotone', 'monotone']
+[00:19:00]   identity     CV_Brier=0.245843   (reference)
+[00:19:00] [champion CB alone]
+[00:19:04]   shift(1p)    CV_Brier=0.245713  Δ=-0.000084   (full-fit bound=0.245712, Δ=-0.000086)  params=[0.035, 0.04]
+[00:19:08]   temp(1p)     CV_Brier=0.245751  Δ=-0.000047   (full-fit bound=0.245750, Δ=-0.000047)  params=[0.9, 0.89]
+[00:19:08]   platt(2p)    CV_Brier=0.245586  Δ=-0.000211   (full-fit bound=0.245581, Δ=-0.000217)  params=[(1.2051, 0.0515), (1.2382, 0.0635)]
+[00:19:08]   isotonic     CV_Brier=0.245620  Δ=-0.000177   (full-fit bound=0.245452, Δ=-0.000345)  params=['monotone', 'monotone']
+[00:19:08]   identity     CV_Brier=0.245797   (reference)
+[00:19:08] [blend, RF weight 0]
+[00:19:11]   shift(1p)    CV_Brier=0.245847  Δ=-0.000044   (full-fit bound=0.245846, Δ=-0.000046)  params=[0.025, 0.03]
+[00:19:15]   temp(1p)     CV_Brier=0.245814  Δ=-0.000077   (full-fit bound=0.245814, Δ=-0.000078)  params=[0.87, 0.86]
+[00:19:15]   platt(2p)    CV_Brier=0.245704  Δ=-0.000188   (full-fit bound=0.245698, Δ=-0.000193)  params=[(1.2248, 0.041), (1.2592, 0.0528)]
+[00:19:15]   isotonic     CV_Brier=0.245741  Δ=-0.000151   (full-fit bound=0.245573, Δ=-0.000319)  params=['monotone', 'monotone']
+[00:19:15]   identity     CV_Brier=0.245891   (reference)
+[00:19:15] ALL_DONE
